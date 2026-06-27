@@ -58,6 +58,8 @@ void execute(s_cmd *cmd) {
   pid_t pids[1024];
 
   while (node != NULL) {
+    if (node->argv[0] == NULL)
+      return;
     if (is_builtin(node->argv[0])) {
       if (strcmp(node->argv[0], "cd") == 0) {
         cd_handler(node);
